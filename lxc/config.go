@@ -262,7 +262,7 @@ func (c *cmdConfigEdit) run(cmd *cobra.Command, args []string) error {
 				return err
 			}
 		} else {
-			instance, etag, err = resource.server.GetInstance(resource.name)
+			instance, etag, err = resource.server.GetInstanceInfo(resource.name)
 			if err != nil {
 				return err
 			}
@@ -509,7 +509,7 @@ func (c *cmdConfigGet) run(cmd *cobra.Command, args []string) error {
 			return nil
 		}
 
-		resp, _, err := resource.server.GetInstance(resource.name)
+		resp, _, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}
@@ -696,7 +696,7 @@ func (c *cmdConfigSet) run(cmd *cobra.Command, args []string) error {
 			return errors.New("There is no config key to set on an instance snapshot.")
 		}
 
-		inst, etag, err := resource.server.GetInstance(resource.name)
+		inst, etag, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}
@@ -883,7 +883,7 @@ func (c *cmdConfigShow) run(cmd *cobra.Command, args []string) error {
 			}
 		} else {
 			// Instance
-			inst, _, err := resource.server.GetInstance(resource.name)
+			inst, _, err := resource.server.GetInstanceInfo(resource.name)
 			if err != nil {
 				return err
 			}

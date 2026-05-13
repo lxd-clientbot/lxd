@@ -261,7 +261,7 @@ func (c *cmdConfigDeviceAdd) run(cmd *cobra.Command, args []string) error {
 			return err
 		}
 	} else {
-		inst, etag, err := resource.server.GetInstance(resource.name)
+		inst, etag, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}
@@ -371,7 +371,7 @@ func (c *cmdConfigDeviceGet) run(cmd *cobra.Command, args []string) error {
 
 		fmt.Println(dev[key])
 	} else {
-		inst, _, err := resource.server.GetInstance(resource.name)
+		inst, _, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}
@@ -459,7 +459,7 @@ func (c *cmdConfigDeviceList) run(cmd *cobra.Command, args []string) error {
 			devices = append(devices, k)
 		}
 	} else {
-		inst, _, err := resource.server.GetInstance(resource.name)
+		inst, _, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}
@@ -515,7 +515,7 @@ func (c *cmdConfigDeviceOverride) run(cmd *cobra.Command, args []string) error {
 	}
 
 	// Override the device
-	inst, etag, err := resource.server.GetInstance(resource.name)
+	inst, etag, err := resource.server.GetInstanceInfo(resource.name)
 	if err != nil {
 		return err
 	}
@@ -651,7 +651,7 @@ func (c *cmdConfigDeviceRemove) run(cmd *cobra.Command, args []string) error {
 			return err
 		}
 	} else {
-		inst, etag, err := resource.server.GetInstance(resource.name)
+		inst, etag, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}
@@ -790,7 +790,7 @@ func (c *cmdConfigDeviceSet) run(cmd *cobra.Command, args []string) error {
 			return err
 		}
 	} else {
-		inst, etag, err := resource.server.GetInstance(resource.name)
+		inst, etag, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}
@@ -894,7 +894,7 @@ func (c *cmdConfigDeviceShow) run(cmd *cobra.Command, args []string) error {
 
 		devices = profile.Devices
 	} else {
-		inst, _, err := resource.server.GetInstance(resource.name)
+		inst, _, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}

@@ -1900,7 +1900,7 @@ func restoreClusterMember(d *Daemon, r *http.Request, mode string) response.Resp
 
 				source = source.UseProject(inst.Project().Name)
 
-				apiInst, _, err := source.GetInstance(inst.Name())
+				apiInst, _, err := source.GetInstanceInfo(inst.Name())
 				if err != nil {
 					return fmt.Errorf("Failed getting instance %q: %w", inst.Name(), err)
 				}

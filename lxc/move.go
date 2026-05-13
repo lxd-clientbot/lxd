@@ -352,7 +352,7 @@ func (c *cmdMove) moveInstance(sourceResource string, destResource string, state
 		}
 
 		// Fetch the current instance.
-		inst, _, err := source.GetInstance(sourceName)
+		inst, _, err := source.GetInstanceInfo(sourceName)
 		if err != nil {
 			return err
 		}

@@ -522,7 +522,7 @@ func (c *cmdNetworkDetach) run(cmd *cobra.Command, args []string) error {
 	}
 
 	// Get the instance entry
-	inst, etag, err := resource.server.GetInstance(args[1])
+	inst, etag, err := resource.server.GetInstanceInfo(args[1])
 	if err != nil {
 		return err
 	}

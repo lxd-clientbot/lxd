@@ -863,7 +863,7 @@ func (c *cmdStorageVolumeDetach) run(cmd *cobra.Command, args []string) error {
 	}
 
 	// Get the instance entry
-	inst, etag, err := resource.server.GetInstance(args[2])
+	inst, etag, err := resource.server.GetInstanceInfo(args[2])
 	if err != nil {
 		return err
 	}

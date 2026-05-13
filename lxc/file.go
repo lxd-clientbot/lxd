@@ -1410,7 +1410,7 @@ func generateRandomString(length int) (string, error) {
 // It provides an unauthenticated SFTP server connected to the instance's filesystem.
 func (c *cmdFileMount) sshSFTPServer(ctx context.Context, instName string, resource remoteResource) error {
 	// Check instance exists.
-	_, _, err := resource.server.GetInstance(instName)
+	_, _, err := resource.server.GetInstanceInfo(instName)
 	if err != nil {
 		return err
 	}

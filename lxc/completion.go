@@ -523,7 +523,7 @@ func (g *cmdGlobal) cmpInstanceSetKeys(remote string, instanceName string, toCom
 		return handleCompletionError(err)
 	}
 
-	instance, _, err := client.GetInstance(instanceName)
+	instance, _, err := client.GetInstanceInfo(instanceName)
 	if err != nil {
 		return nil, cobra.ShellCompDirectiveError
 	}
@@ -645,7 +645,7 @@ func (g *cmdGlobal) cmpInstanceDeviceNames(instanceName string) ([]string, cobra
 	resource := resources[0]
 	client := resource.server
 
-	instanceNameOnly, _, err := client.GetInstance(instanceName)
+	instanceNameOnly, _, err := client.GetInstanceInfo(instanceName)
 	if err != nil {
 		return nil, cobra.ShellCompDirectiveError
 	}

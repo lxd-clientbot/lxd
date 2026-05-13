@@ -245,7 +245,7 @@ func (c *cmdAction) doAction(action string, conf *config.Config, nameArg string)
 	}
 
 	if action == "start" {
-		current, _, err := d.GetInstance(name)
+		current, _, err := d.GetInstanceInfo(name)
 		if err != nil {
 			return err
 		}

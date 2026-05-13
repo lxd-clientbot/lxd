@@ -118,7 +118,7 @@ func (c *cmdDelete) run(cmd *cobra.Command, args []string) error {
 			continue
 		}
 
-		ct, _, err := resource.server.GetInstance(resource.name)
+		ct, _, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return err
 		}
@@ -131,7 +131,7 @@ func (c *cmdDelete) run(cmd *cobra.Command, args []string) error {
 
 		if c.flagForceProtected && shared.IsTrue(ct.ExpandedConfig["security.protection.delete"]) {
 			// Refresh in case we had to stop it above.
-			ct, etag, err := resource.server.GetInstance(resource.name)
+			ct, etag, err := resource.server.GetInstanceInfo(resource.name)
 			if err != nil {
 				return err
 			}

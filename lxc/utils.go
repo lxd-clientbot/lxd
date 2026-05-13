@@ -73,7 +73,7 @@ func getProfileDevices(destRemote lxd.InstanceServer, serverSideProfiles []strin
 // Add a device to an instance.
 func instanceDeviceAdd(client lxd.InstanceServer, name string, devName string, dev map[string]string) error {
 	// Get the instance entry
-	inst, etag, err := client.GetInstance(name)
+	inst, etag, err := client.GetInstanceInfo(name)
 	if err != nil {
 		return err
 	}
@@ -293,7 +293,7 @@ func instancesExist(resources []remoteResource) error {
 			continue
 		}
 
-		_, _, err := resource.server.GetInstance(resource.name)
+		_, _, err := resource.server.GetInstanceInfo(resource.name)
 		if err != nil {
 			return fmt.Errorf("Failed checking instance exists \"%s:%s\": %w", resource.remote, resource.name, err)
 		}

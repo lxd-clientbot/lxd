@@ -234,7 +234,7 @@ func (c *cmdCopy) copyInstance(conf *config.Config, sourceResource string, destR
 		}
 
 		// Copy of an instance into a new instance
-		sourceInstance, _, err := source.GetInstance(sourceName)
+		sourceInstance, _, err := source.GetInstanceInfo(sourceName)
 		if err != nil {
 			return err
 		}
@@ -256,7 +256,7 @@ func (c *cmdCopy) copyInstance(conf *config.Config, sourceResource string, destR
 		}
 
 		if c.flagRefresh && !needsRefreshClientFallback {
-			refreshTarget, _, err = dest.GetInstance(destName)
+			refreshTarget, _, err = dest.GetInstanceInfo(destName)
 			if err != nil && !api.StatusErrorCheck(err, http.StatusNotFound) {
 				return fmt.Errorf("Failed loading refresh target instance %q: %w", destName, err)
 			}
@@ -319,7 +319,7 @@ func (c *cmdCopy) copyInstance(conf *config.Config, sourceResource string, destR
 
 	// Compatibility fallback for older servers that don't apply refresh config server-side.
 	if needsRefreshClientFallback {
-		refreshTarget, refreshTargetETag, err = dest.GetInstance(destName)
+		refreshTarget, refreshTargetETag, err = dest.GetInstanceInfo(destName)
 		if err != nil {
 			return fmt.Errorf("Failed loading refresh target instance %q: %w", destName, err)
 		}

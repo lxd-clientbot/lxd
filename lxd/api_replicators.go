@@ -1103,7 +1103,7 @@ func prepareReplicatorRunOperation(ctx context.Context, s *state.State, projectN
 			if restore {
 				// In restore mode the local copy is stale; fetch current metadata from
 				// the remote leader so the restore uses up-to-date config/state.
-				freshInst, _, err := dstClient.GetInstance(instName)
+				freshInst, _, err := dstClient.GetInstanceInfo(instName)
 				if err != nil {
 					if api.StatusErrorCheck(err, http.StatusNotFound) {
 						// Instance was deleted on the leader after failover; skip it rather

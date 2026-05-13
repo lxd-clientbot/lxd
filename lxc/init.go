@@ -437,7 +437,7 @@ func (c *cmdInit) create(conf *config.Config, args []string, launch bool) (lxd.I
 }
 
 func (c *cmdInit) checkNetwork(d lxd.InstanceServer, name string) {
-	ct, _, err := d.GetInstance(name)
+	ct, _, err := d.GetInstanceInfo(name)
 	if err != nil {
 		return
 	}

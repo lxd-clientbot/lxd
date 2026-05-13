@@ -109,7 +109,7 @@ func (c *cmdPublish) run(cmd *cobra.Command, args []string) error {
 	}
 
 	if !shared.IsSnapshot(cName) {
-		ct, etag, err := s.GetInstance(cName)
+		ct, etag, err := s.GetInstanceInfo(cName)
 		if err != nil {
 			return err
 		}
@@ -166,7 +166,7 @@ func (c *cmdPublish) run(cmd *cobra.Command, args []string) error {
 
 			// If we had to clear the ephemeral flag, restore it now.
 			if wasEphemeral {
-				ct, etag, err := s.GetInstance(cName)
+				ct, etag, err := s.GetInstanceInfo(cName)
 				if err != nil {
 					return err
 				}

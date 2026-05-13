@@ -98,7 +98,7 @@ func (c *cmdRebuild) rebuild(conf *config.Config, args []string) error {
 		return fmt.Errorf("Instance snapshots cannot be rebuilt: %s", name)
 	}
 
-	current, _, err := d.GetInstance(name)
+	current, _, err := d.GetInstanceInfo(name)
 	if err != nil {
 		return err
 	}

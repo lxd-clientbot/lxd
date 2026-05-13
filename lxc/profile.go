@@ -148,7 +148,7 @@ func (c *cmdProfileAdd) run(cmd *cobra.Command, args []string) error {
 	}
 
 	// Add the profile
-	inst, etag, err := resource.server.GetInstance(resource.name)
+	inst, etag, err := resource.server.GetInstanceInfo(resource.name)
 	if err != nil {
 		return err
 	}
@@ -231,7 +231,7 @@ func (c *cmdProfileAssign) run(cmd *cobra.Command, args []string) error {
 		return errors.New("Missing instance name")
 	}
 
-	inst, etag, err := resource.server.GetInstance(resource.name)
+	inst, etag, err := resource.server.GetInstanceInfo(resource.name)
 	if err != nil {
 		return err
 	}
@@ -885,7 +885,7 @@ func (c *cmdProfileRemove) run(cmd *cobra.Command, args []string) error {
 	}
 
 	// Remove the profile
-	inst, etag, err := resource.server.GetInstance(resource.name)
+	inst, etag, err := resource.server.GetInstanceInfo(resource.name)
 	if err != nil {
 		return err
 	}

@@ -354,8 +354,8 @@ func (r *ProtocolLXD) GetInstancesFull(args GetInstancesFullArgs) ([]api.Instanc
 	return instances, nil
 }
 
-// GetInstance returns the instance entry for the provided name.
-func (r *ProtocolLXD) GetInstance(name string) (*api.Instance, string, error) {
+// GetInstanceInfo returns the instance entry for the provided name.
+func (r *ProtocolLXD) GetInstanceInfo(name string) (*api.Instance, string, error) {
 	instance := api.Instance{}
 
 	path, _, err := r.instanceTypeToPath(api.InstanceTypeAny)
@@ -422,7 +422,7 @@ func (r *ProtocolLXD) GetInstanceFull(name string) (*api.InstanceFull, string, e
 
 	if r.CheckExtension("instance_get_full") != nil {
 		// Backware compatibility.
-		ct, _, err := r.GetInstance(name)
+		ct, _, err := r.GetInstanceInfo(name)
 		if err != nil {
 			return nil, "", err
 		}
@@ -1088,7 +1088,7 @@ func (r *ProtocolLXD) DeleteInstance(name string, force bool) (Operation, error)
 			u = u.WithQuery("force", "1")
 		} else {
 			// Older servers need a forced stop before delete when instance_force_delete isn't supported.
-			ct, _, err := r.GetInstance(name)
+			ct, _, err := r.GetInstanceInfo(name)
 			if err != nil {
 				return nil, err
 			}
@@ -1865,7 +1865,7 @@ func (r *ProtocolLXD) CopyInstanceSnapshot(source InstanceServer, instanceName s
 		return nil, fmt.Errorf("Failed getting destination connection info: %w", err)
 	}
 
-	instance, _, err := source.GetInstance(cName)
+	instance, _, err := source.GetInstanceInfo(cName)
 	if err != nil {
 		return nil, fmt.Errorf("Failed getting instance info: %w", err)
 	}
@@ -1908,7 +1908,7 @@ func (r *ProtocolLXD) CopyInstanceSnapshot(source InstanceServer, instanceName s
 
 	// If deadling with migration, we need to set the type.
 	if source.HasExtension("virtual-machines") {
-		inst, _, err := source.GetInstance(instanceName)
+		inst, _, err := source.GetInstanceInfo(instanceName)
 		if err != nil {
 			return nil, err
 		}

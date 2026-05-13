@@ -14,7 +14,7 @@ permissions:
 jobs:
   dispatch:
     name: Notify downstream repo
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Checkout code

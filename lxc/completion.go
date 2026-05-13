@@ -241,7 +241,7 @@ func (g *cmdGlobal) cmpClusterMemberAllConfigKeys(memberName string) ([]string, 
 	resource := resources[0]
 	client := resource.server
 
-	cluster, _, err := client.GetCluster()
+	cluster, _, err := client.GetClusterInfo()
 	if err != nil || !cluster.Enabled {
 		return nil, cobra.ShellCompDirectiveError
 	}
@@ -287,7 +287,7 @@ func (g *cmdGlobal) cmpClusterMemberConfigs(memberName string) ([]string, cobra.
 	resource := resources[0]
 	client := resource.server
 
-	cluster, _, err := client.GetCluster()
+	cluster, _, err := client.GetClusterInfo()
 	if err != nil || !cluster.Enabled {
 		return nil, cobra.ShellCompDirectiveError
 	}
@@ -364,7 +364,7 @@ func (g *cmdGlobal) cmpClusterMemberRoles(memberName string) ([]string, cobra.Sh
 	resource := resources[0]
 	client := resource.server
 
-	cluster, _, err := client.GetCluster()
+	cluster, _, err := client.GetClusterInfo()
 	if err != nil || !cluster.Enabled {
 		return nil, cobra.ShellCompDirectiveError
 	}

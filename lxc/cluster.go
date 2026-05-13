@@ -165,7 +165,7 @@ func (c *cmdClusterList) run(cmd *cobra.Command, args []string) error {
 	resource := resources[0]
 
 	// Check if clustered
-	cluster, _, err := resource.server.GetCluster()
+	cluster, _, err := resource.server.GetClusterInfo()
 	if err != nil {
 		return err
 	}
@@ -735,7 +735,7 @@ func (c *cmdClusterEnable) run(cmd *cobra.Command, args []string) error {
 	}
 
 	// Check if already enabled
-	currentCluster, etag, err := resource.server.GetCluster()
+	currentCluster, etag, err := resource.server.GetClusterInfo()
 	if err != nil {
 		return fmt.Errorf("Failed retrieving current cluster config: %w", err)
 	}
@@ -1011,7 +1011,7 @@ func (c *cmdClusterListTokens) run(cmd *cobra.Command, args []string) error {
 	resource := resources[0]
 
 	// Check if clustered.
-	cluster, _, err := resource.server.GetCluster()
+	cluster, _, err := resource.server.GetClusterInfo()
 	if err != nil {
 		return err
 	}
@@ -1113,7 +1113,7 @@ func (c *cmdClusterRevokeToken) run(cmd *cobra.Command, args []string) error {
 	resource := resources[0]
 
 	// Check if clustered.
-	cluster, _, err := resource.server.GetCluster()
+	cluster, _, err := resource.server.GetClusterInfo()
 	if err != nil {
 		return err
 	}
@@ -1221,7 +1221,7 @@ func (c *cmdClusterUpdateCertificate) run(cmd *cobra.Command, args []string) err
 	resource := resources[0]
 
 	// Check if clustered.
-	cluster, _, err := resource.server.GetCluster()
+	cluster, _, err := resource.server.GetClusterInfo()
 	if err != nil {
 		return err
 	}

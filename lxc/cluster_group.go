@@ -485,7 +485,7 @@ func (c *cmdClusterGroupList) run(cmd *cobra.Command, args []string) error {
 	resource := resources[0]
 
 	// Check if clustered
-	cluster, _, err := resource.server.GetCluster()
+	cluster, _, err := resource.server.GetClusterInfo()
 	if err != nil {
 		return err
 	}

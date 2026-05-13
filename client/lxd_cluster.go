@@ -7,7 +7,7 @@ import (
 )
 
 // GetCluster returns information about a cluster.
-func (r *ProtocolLXD) GetCluster() (*api.Cluster, string, error) {
+func (r *ProtocolLXD) GetClusterInfo() (*api.Cluster, string, error) {
 	err := r.CheckExtension("clustering")
 	if err != nil {
 		return nil, "", err

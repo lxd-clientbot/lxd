@@ -257,7 +257,7 @@ func (c *cmdInit) askClustering(config *api.InitPreseed, server *api.Server) err
 			}
 
 			// Get the list of required member config keys.
-			cluster, _, err := client.GetCluster()
+			cluster, _, err := client.GetClusterInfo()
 			if err != nil {
 				return fmt.Errorf("Failed retrieving cluster information: %w", err)
 			}

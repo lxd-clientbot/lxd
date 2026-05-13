@@ -517,7 +517,7 @@ func initDataClusterApply(d lxd.InstanceServer, config *api.InitClusterPreseed) 
 	}
 
 	// Get the current cluster configuration
-	currentCluster, etag, err := d.GetCluster()
+	currentCluster, etag, err := d.GetClusterInfo()
 	if err != nil {
 		return fmt.Errorf("Failed retrieving current cluster config: %w", err)
 	}

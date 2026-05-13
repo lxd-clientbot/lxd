@@ -47,7 +47,7 @@ func TestCluster_Get(t *testing.T) {
 	client, err := lxd.ConnectLXDUnix(daemon.os.GetUnixSocket(), nil)
 	require.NoError(t, err)
 
-	cluster, _, err := client.GetCluster()
+	cluster, _, err := client.GetClusterInfo()
 	require.NoError(t, err)
 	assert.Empty(t, cluster.ServerName)
 	assert.False(t, cluster.Enabled)
